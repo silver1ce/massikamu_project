@@ -9,10 +9,45 @@ from kivy.uix.textinput import TextInput
 
 
 # Connect to MongoDB
-client = pymongo.MongoClient("mongodb://localhost:27017/")
-db = client["MassiKamu"]
-expenses_collection = db["expenses"]
 
+connection = pymongo.MongoClient("mongodb+srv://temp:massikamu@cluster0.qn6cv7r.mongodb.net/?retryWrites=true&w=majority")
+db = connection["MassiKamu"]
+expense_collection = db["expenses"]
+
+def yhdista_mongoon():
+    try:
+        CONNECTION_STRING="mongodb+srv://temp:massikamu@cluster0.qn6cv7r.mongodb.net/?retryWrites=true&w=majority"
+        connection = pymongo.MongoClient(CONNECTION_STRING)
+        print("yhteys ok")
+        return connection["MassiKamu"]
+
+    except Exception:
+        print("Ei voida yhdistää Mongoon")
+
+def tallenna_tiedot(nimi:str, summa:float, paivamaara:datetime):
+    expense_collection.insert_one(
+        {
+            "nimi": nimi,
+            "summa":summa,
+            "paivamaara": paivamaara
+        }
+    )
+
+def nayta_tiedot():
+    tiedot = []
+    for rivi in expense_collection.find():
+        tiedot.append(
+            rivi["nimi"] + 
+            ": " +
+            str(rivi["summa"])+ 
+            ", " +
+            (rivi ["paivamaara"]).strftime("%d.%m.%Y %H:%M")
+
+        )
+    
+    return tiedot
+
+db = yhdista_mongoon()
 
 class MassiKamuApp(App):
     def build(self):
@@ -41,7 +76,7 @@ class MassiKamuApp(App):
             "amount": amount,
             "date": datetime.datetime.now()
         }
-        expenses_collection.insert_one(expense)
+        expense_collection.insert_one(expense)
         
         self.category_input.text = ''
         self.amount_input.text = ''
@@ -62,7 +97,7 @@ class MassiKamuApp(App):
                 }
             }
         ]
-        result = list(expenses_collection.aggregate(pipeline))
+        result = list(expense_collection.aggregate(pipeline))
     
         categories = []
         amounts = []
@@ -90,4 +125,4 @@ if __name__ == '__main__':
     MassiKamuApp().run()
 
 # Close the MongoDB connection
-client.close()
+expense_collection.close()
