@@ -1,0 +1,11 @@
+Sovelluksen pyörittäminen vaatii vanhemman version Pythonista, eli uusimmalla mahdollisella ei 
+toiminut tänään. Latasin 3.10.11 version ja loin virtuaaliympäristön, jossa on käytössä tuo 
+vanhempi versio. Jostain syystä en saanut enää requirements.txt:iä ladattua uudestaan, joten
+latasin kaikki tarvittavat paketit yksitellen. Tästä syystä aikaa kului suunniteltua pidempään. 
+
+Lisäsin kaksi uutta sivua, toiseen aukeaa taulukkona kaikki tiedot, ja toiseen aukeaa diagrammi.
+Diagrammia olisi hyvä vielä parannella, ja lisätä siihen päivämäärä- ja aikatiedot. Kuvien kokoja 
+voisi myös muuttaa. 
+
+Tein virheenkorjauksen tietojensyöttöön. Eli ei pysty lisäämään ilman mitään kirjoitusta. 
+Ja jos yrittää syöttää jonkin merkin, joka ei ole muunnettavissa floatiksi, ohjelma antaa virheilmoituksen.
