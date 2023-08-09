@@ -1,0 +1,42 @@
+Aluksi suunnittelua, aikataulutusta, työnjakoa. 
+
+10.-20.6. Sovelluksen pääsivun luonti ja kuvaajan luonti. MongoDB-yhteyden luonti. 
+Graafien luomiskokeiluja ja harjoittelua. 
+
+
+22.6. MongoDB yhteys ei toiminut, joten löydettiin ohje ladata certifi-moduuli, sen jälkeen yhteys taas toimi. Tähän meni 
+melkein koko päivä, koska ei meinannut toimia. 
+
+1.8. Jaoimme eri osiot omiin tiedostoihin. Testattiin, että toimii. Yritimme tehdä sivunvaihtoa screenmanagerilla, mutta sivu 
+avautui vain mustana.
+
+2.8. ScreenManagerin bugi löytyi, eli piti vain lisätä layout siihen itseensä: #lopuksi lisätään layout tähän mainwindowiin
+        self.add_widget(self.layout)
+
+
+3.8. Sovelluksen pyörittäminen vaatii vanhemman version Pythonista, eli uusimmalla mahdollisella ei 
+toiminut tänään. Latasin 3.10.11 version ja loin virtuaaliympäristön, jossa on käytössä tuo 
+vanhempi versio. Jostain syystä en saanut enää requirements.txt:iä ladattua uudestaan, joten
+latasin kaikki tarvittavat paketit yksitellen. Tästä syystä aikaa kului suunniteltua pidempään. 
+
+Lisäsin kaksi uutta sivua, toiseen aukeaa taulukkona kaikki tiedot, ja toiseen aukeaa diagrammi.
+Diagrammia olisi hyvä vielä parannella, ja lisätä siihen päivämäärä- ja aikatiedot. Kuvien kokoja 
+voisi myös muuttaa. 
+
+Tein virheenkorjauksen tietojensyöttöön. Eli ei pysty lisäämään ilman mitään kirjoitusta. 
+Ja jos yrittää syöttää jonkin merkin, joka ei ole muunnettavissa floatiksi, ohjelma antaa virheilmoituksen.
+
+9.8. Lisäsin viimeisen tallennetun tiedon poiston ja sille buttonin. Tässäkin tapauksessa poisto
+näkyy vasta, kun sovelluksen avaa uudelleen. 
+
+Lisäsin kuukauden nimen ja kuukauden kulut yhteenlaskettuna pylväsdiagrammiin.
+
+Yritin lisätä popupia siihen tapaukseen, että Mongoyhteys ei toimisikaan, mutta se ei onnistunut, 
+vaan sovellus vain kaatui netin tai väärän salasanan tapauksessa.
+
+Molemmat kaaviot on järjestetty menemään aakkosjärjestyksessä, sekä niissä näkyy vain kuluvan kuukauden tiedot.
+
+Lisäsin toiminnon, joka kysyy varmistuksen poistolle. Popup widgettiin ei saanut lisättyä kuin
+yhden buttonin, niin laitoin vain kylläbuttonin, mutta tämä pitäisi korjata tulevaisuudessa.
+Lisäksi tästä osiosta puuttuu virheen käsittely tapauksessa, että tietokannassa ei olisi yhtäkään 
+tietoa. 
