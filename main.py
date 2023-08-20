@@ -8,4 +8,4 @@ if __name__ == '__main__':
     massikamusovellus.MassiKamuApp().run()
 
 # Close the MongoDB connection
-#ietokanta.expense_collection.close()
+#tietokanta.expense_collection.close()
